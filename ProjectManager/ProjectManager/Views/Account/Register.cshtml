@@ -18,6 +18,21 @@
         </div>
     </div>
     <div class="form-group">
+        @Html.LabelFor(m => m.Role, new { @class = "col-md-2 control-label"})
+        <div class="col-md-10" style="color:black">
+            @{var listItems = new List<SelectListItem>()
+                {
+                new SelectListItem {Text = "Team Member",   Value = "1"},
+                new SelectListItem {Text = "Leader", Value = "2"},
+                new SelectListItem {Text = "Client", Value = "3"},
+                };
+
+                @Html.DropDownListFor(model => model.Role, listItems)
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })

@@ -10,6 +10,8 @@ namespace ProjectManager.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public int Status { get; set; }
+        public bool isComplete { get; set; }
+        public List<TeamMember> ProjectTeam { get; set; }
         
         public List<string> Tasks { get; set; }
     }

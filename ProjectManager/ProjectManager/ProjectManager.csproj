@@ -196,8 +196,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ScrumMastersController.cs" />
+    <Compile Include="Controllers\TeamMembersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,11 +208,48 @@
     <Compile Include="Migrations\201603082116397_first.Designer.cs">
       <DependentUpon>201603082116397_first.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603091505239_role.cs" />
+    <Compile Include="Migrations\201603091505239_role.Designer.cs">
+      <DependentUpon>201603091505239_role.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603091618599_sort.cs" />
+    <Compile Include="Migrations\201603091618599_sort.Designer.cs">
+      <DependentUpon>201603091618599_sort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603091629493_migration.cs" />
+    <Compile Include="Migrations\201603091629493_migration.Designer.cs">
+      <DependentUpon>201603091629493_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603091716011_newfirst.cs" />
+    <Compile Include="Migrations\201603091716011_newfirst.Designer.cs">
+      <DependentUpon>201603091716011_newfirst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603091747160_newtwo.cs" />
+    <Compile Include="Migrations\201603091747160_newtwo.Designer.cs">
+      <DependentUpon>201603091747160_newtwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603091750342_new.cs" />
+    <Compile Include="Migrations\201603091750342_new.Designer.cs">
+      <DependentUpon>201603091750342_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603091808250_migrationnw.cs" />
+    <Compile Include="Migrations\201603091808250_migrationnw.Designer.cs">
+      <DependentUpon>201603091808250_migrationnw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603091821448_blaha.cs" />
+    <Compile Include="Migrations\201603091821448_blaha.Designer.cs">
+      <DependentUpon>201603091821448_blaha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603091823041_again.cs" />
+    <Compile Include="Migrations\201603091823041_again.Designer.cs">
+      <DependentUpon>201603091823041_again.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PMDBcontext.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ScrumMaster.cs" />
     <Compile Include="Models\TeamMember.cs" />
@@ -277,9 +317,26 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\TeamMembers\Create.cshtml" />
+    <Content Include="Views\TeamMembers\Delete.cshtml" />
+    <Content Include="Views\TeamMembers\Details.cshtml" />
+    <Content Include="Views\TeamMembers\Edit.cshtml" />
+    <Content Include="Views\TeamMembers\Index.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\ScrumMasters\Create.cshtml" />
+    <Content Include="Views\ScrumMasters\Delete.cshtml" />
+    <Content Include="Views\ScrumMasters\Details.cshtml" />
+    <Content Include="Views\ScrumMasters\Edit.cshtml" />
+    <Content Include="Views\ScrumMasters\Index.cshtml" />
+    <Content Include="Views\Home\SorryNoProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Role\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -292,6 +349,33 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603082116397_first.resx">
       <DependentUpon>201603082116397_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603091505239_role.resx">
+      <DependentUpon>201603091505239_role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603091618599_sort.resx">
+      <DependentUpon>201603091618599_sort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603091629493_migration.resx">
+      <DependentUpon>201603091629493_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603091716011_newfirst.resx">
+      <DependentUpon>201603091716011_newfirst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603091747160_newtwo.resx">
+      <DependentUpon>201603091747160_newtwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603091750342_new.resx">
+      <DependentUpon>201603091750342_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603091808250_migrationnw.resx">
+      <DependentUpon>201603091808250_migrationnw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603091821448_blaha.resx">
+      <DependentUpon>201603091821448_blaha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603091823041_again.resx">
+      <DependentUpon>201603091823041_again.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -26,5 +26,26 @@ namespace ProjectManager.Controllers
 
             return View();
         }
+        public ActionResult Project()
+        {
+            ProjectManager.Models.ApplicationDbContext adbc = new ProjectManager.Models.ApplicationDbContext();
+            int UserRole = adbc.Users.Select(x => x.Role).FirstOrDefault();
+            if(UserRole == 1)
+            {
+                return RedirectToAction("Index", "TeamMembers");
+            }
+            else if (UserRole == 2)
+            {
+                return RedirectToAction("Index", "ScrumMasters");
+            }
+            else if (UserRole == 3)
+            {
+                return RedirectToAction("Index", "Clients");
+            }
+            else
+            {
+                return View("SorryNoProject");
+            }
+        }
     }
 }
