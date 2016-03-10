@@ -13,11 +13,11 @@ namespace ProjectManager.Controllers
     public class TeamMembersController : Controller
     {
         private PMDBcontext db = new PMDBcontext();
-
+        ProjectManager.Models.TeamMember tm = new Models.TeamMember();
         // GET: TeamMembers
         public ActionResult Index()
         {
-            
+            tm.Role = "Team Member";
             return View(db.TeamMembers.ToList());
         }
 

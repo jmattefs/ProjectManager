@@ -24,7 +24,8 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @ViewBag.Name = "Team Member"
+            
+            @Html.DisplayFor(modelItem => item.Role)
         </td>
 
         <td>

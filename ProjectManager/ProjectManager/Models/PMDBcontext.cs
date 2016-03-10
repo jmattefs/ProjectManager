@@ -19,6 +19,8 @@ namespace ProjectManager.Models
         public System.Data.Entity.DbSet<ProjectManager.Models.Client> Clients { get; set; }
 
         public System.Data.Entity.DbSet<ProjectManager.Models.ScrumMaster> ScrumMasters { get; set; }
+
+        public System.Data.Entity.DbSet<ProjectManager.Models.Project> Projects { get; set; }
     }
         
         

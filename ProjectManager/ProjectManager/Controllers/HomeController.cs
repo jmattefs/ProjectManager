@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace ProjectManager.Controllers
 {
@@ -29,14 +30,19 @@ namespace ProjectManager.Controllers
         public ActionResult Project()
         {
             ProjectManager.Models.ApplicationDbContext adbc = new ProjectManager.Models.ApplicationDbContext();
-            int UserRole = adbc.Users.Select(x => x.Role).FirstOrDefault();
+            ProjectManager.Models.TeamMember tm = new Models.TeamMember();
+            ProjectManager.Models.ScrumMaster sm = new Models.ScrumMaster();
+            ProjectManager.Models.Client c = new Models.Client();
+            string UserID = User.Identity.GetUserId();
+            int UserRole = adbc.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
             if(UserRole == 1)
             {
+                tm.Role = "Team Member";
                 return RedirectToAction("Index", "TeamMembers");
             }
             else if (UserRole == 2)
             {
-                return RedirectToAction("Index", "ScrumMasters");
+                return RedirectToAction("Index", "Projects");
             }
             else if (UserRole == 3)
             {

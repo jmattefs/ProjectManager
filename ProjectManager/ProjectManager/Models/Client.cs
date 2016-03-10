@@ -8,6 +8,7 @@ namespace ProjectManager.Models
     public class Client
     {
         public int ID { get; set; }
+        public string Name { get; set; }
         public string Role { get; set; }
         public string Feedback { get; set; }
         public Project MyProject { get; set; }

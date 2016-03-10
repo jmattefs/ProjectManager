@@ -151,7 +151,28 @@ namespace ProjectManager.Controllers
         {
             if (ModelState.IsValid)
             {
+                PMDBcontext pmdb = new PMDBcontext();
+                int role = model.Role;
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Role = model.Role };
+                var teamMember = new TeamMember { Name = model.Email, Role = "Team Member" };
+                var leader = new ScrumMaster { Name = model.Email, Role = "Team Leader" };
+                var client = new Client { Name = model.Email, Role = "Client" };
+                if (role == 1)
+                {                  
+                    pmdb.TeamMembers.Add(teamMember);
+                    pmdb.SaveChanges();
+                }
+                else if (role == 2)
+                {
+                    pmdb.ScrumMasters.Add(leader);
+                    pmdb.SaveChanges();
+                }
+                else
+                {
+                    pmdb.Clients.Add(client);
+                    pmdb.SaveChanges();
+                }
+                              
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
