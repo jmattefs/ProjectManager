@@ -237,17 +237,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603092126449_m.cs" />
-    <Compile Include="Migrations\201603092126449_m.Designer.cs">
-      <DependentUpon>201603092126449_m.cs</DependentUpon>
+    <Compile Include="Migrations\201603112043199_mm.cs" />
+    <Compile Include="Migrations\201603112043199_mm.Designer.cs">
+      <DependentUpon>201603112043199_mm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603092210180_m1.cs" />
-    <Compile Include="Migrations\201603092210180_m1.Designer.cs">
-      <DependentUpon>201603092210180_m1.cs</DependentUpon>
+    <Compile Include="Migrations\201603112131403_mmmmm.cs" />
+    <Compile Include="Migrations\201603112131403_mmmmm.Designer.cs">
+      <DependentUpon>201603112131403_mmmmm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603102240077_newmigr.cs" />
-    <Compile Include="Migrations\201603102240077_newmigr.Designer.cs">
-      <DependentUpon>201603102240077_newmigr.cs</DependentUpon>
+    <Compile Include="Migrations\201603112149468_a.cs" />
+    <Compile Include="Migrations\201603112149468_a.Designer.cs">
+      <DependentUpon>201603112149468_a.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603112319138_na.cs" />
+    <Compile Include="Migrations\201603112319138_na.Designer.cs">
+      <DependentUpon>201603112319138_na.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -347,12 +351,13 @@
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
-    <Content Include="Views\ScrumMasters\NewProject.cshtml" />
     <Content Include="Service References\Salesforce1\ConnectedService.json" />
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\Contacts\Create.cshtml" />
     <Content Include="Views\Contacts\Delete.cshtml" />
     <Content Include="Views\Contacts\Edit.cshtml" />
+    <Content Include="Views\TeamMembers\MyProject.cshtml" />
+    <Content Include="Views\TeamMembers\AssignTM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -372,18 +377,21 @@
     <Content Include="Scripts\jquery-2.2.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603092126449_m.resx">
-      <DependentUpon>201603092126449_m.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603092210180_m1.resx">
-      <DependentUpon>201603092210180_m1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603102240077_newmigr.resx">
-      <DependentUpon>201603102240077_newmigr.cs</DependentUpon>
-    </EmbeddedResource>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <EmbeddedResource Include="Migrations\201603112043199_mm.resx">
+      <DependentUpon>201603112043199_mm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603112131403_mmmmm.resx">
+      <DependentUpon>201603112131403_mmmmm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603112149468_a.resx">
+      <DependentUpon>201603112149468_a.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603112319138_na.resx">
+      <DependentUpon>201603112319138_na.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectManager.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ProjectManager.Controllers
 {
@@ -14,12 +15,48 @@ namespace ProjectManager.Controllers
     {
         private PMDBcontext db = new PMDBcontext();
         ProjectManager.Models.TeamMember tm = new Models.TeamMember();
+        public ActionResult MyProject()
+        {
+            var id = User.Identity.GetUserId();
+            var email = User.Identity.GetUserName();
+            var model = db.TeamMembers.Where(x => x.Name == email).Select(x => x).FirstOrDefault();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult MyProject([Bind(Include = "ID,TaskComplete")] TeamMember teamMember)
+        {
+            if (ModelState.IsValid)
+            {
+                var id = User.Identity.GetUserId();
+                var email = User.Identity.GetUserName();
+                var model = db.TeamMembers.Where(x => x.Name == email).Select(x => x).FirstOrDefault();
+
+                model.TaskComplete = teamMember.TaskComplete;
+                
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
         // GET: TeamMembers
         public ActionResult Index()
         {
-            tm.Role = "Team Member";
+           
             return View(db.TeamMembers.ToList());
         }
+        //public ActionResult MyProject()
+        //{
+        //    var model = new Models.TeamMember()
+        //    {
+        //        TaskStatus= getTaskStatus(),
+        //    }
+        //    return View("MyProject", );
+        //}
+        //public bool getTaskStatus()
+        //{
+        //    db.TeamMembers.Select()
+        //}
 
         // GET: TeamMembers/Details/5
         public ActionResult Details(int? id)
@@ -123,6 +160,26 @@ namespace ProjectManager.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Assign()
+        {
+            return View("AssignTM");
+        }
+        [HttpPost]
+        public ActionResult Assign([Bind(Include = "ID,Project,Name,Task")] TeamMember teamMember)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = db.TeamMembers.Where(x => x.Name == teamMember.Name).Select(x => x).FirstOrDefault();
+                var project = db.Projects.Where(x => x.ProjectName == teamMember.Project.ProjectName).Select(x => x).FirstOrDefault();
+                var task = db.TeamMembers.Where(x => x.Task == teamMember.Task).Select(x => x).FirstOrDefault();
+                user.Project = project;
+                user.Task = teamMember.Task;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(teamMember);
         }
     }
 }

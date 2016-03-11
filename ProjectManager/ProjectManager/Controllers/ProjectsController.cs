@@ -17,7 +17,7 @@ namespace ProjectManager.Controllers
         // GET: Projects
         public ActionResult Index()
         {
-            return View("NewProject");
+            return RedirectToAction("Assign", "TeamMembers");
         }
 
         // GET: Projects/Details/5
@@ -46,11 +46,17 @@ namespace ProjectManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,CompletedTasks,NumberofTasks,isComplete")] Project project)
+        public ActionResult Create([Bind(Include = "ID,ProjectName")] Project project)
         {
+            
             if (ModelState.IsValid)
             {
+
+                var myProject = db.Projects.Where(x => x.ProjectName == project.ProjectName).Select(x => x).FirstOrDefault();
+
+
                 db.Projects.Add(project);
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

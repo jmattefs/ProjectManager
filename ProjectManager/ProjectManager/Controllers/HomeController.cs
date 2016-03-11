@@ -37,16 +37,16 @@ namespace ProjectManager.Controllers
             int UserRole = adbc.Users.Where(x => x.Id == UserID).Select(x => x.Role).FirstOrDefault();
             if(UserRole == 1)
             {
-                tm.Role = "Team Member";
-                return RedirectToAction("Index", "TeamMembers");
+               
+                return RedirectToAction("MyProject", "TeamMembers");
             }
             else if (UserRole == 2)
             {
-                return RedirectToAction("Index", "Projects");
+                return RedirectToAction("Create", "Projects");
             }
             else if (UserRole == 3)
             {
-                return RedirectToAction("Index", "Clients");
+                return RedirectToAction("Details", "Clients");
             }
             else
             {
