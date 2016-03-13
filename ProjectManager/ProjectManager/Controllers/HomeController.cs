@@ -42,7 +42,7 @@ namespace ProjectManager.Controllers
             }
             else if (UserRole == 2)
             {
-                return RedirectToAction("Create", "Projects");
+                return RedirectToAction("MyProject", "ScrumMasters");  
             }
             else if (UserRole == 3)
             {

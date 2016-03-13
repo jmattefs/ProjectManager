@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectManager.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ProjectManager.Controllers
 {
@@ -18,6 +19,13 @@ namespace ProjectManager.Controllers
         public ActionResult Index()
         {
             return View(db.ScrumMasters.ToList());
+        }
+        public ActionResult MyProject()
+        {
+            var id = User.Identity.GetUserId();
+            var email = User.Identity.GetUserName();
+            var model = db.TeamMembers.Where(x => x.Name == email).Select(x => x).FirstOrDefault();
+            return View(model);
         }
 
         // GET: ScrumMasters/Details/5

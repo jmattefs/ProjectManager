@@ -1,12 +1,13 @@
-﻿@model ProjectManager.Models.TeamMember
+﻿@model ProjectManager.Models.ScrumMaster
 
 @{
-    ViewBag.Title = "MyProject";
+    ViewBag.Title = "View";
 }
 <br />
 <br />
 <h2>My Project Status</h2>
 <br />
+
 <html>
 <head>
     <title>Doughnut Chart</title>
@@ -49,7 +50,7 @@
 				    highlight: "#85b7ea",
 				    label: "Task C"
 				},
-		
+
 
         ];
 
@@ -62,34 +63,10 @@
 
     </script>
 </body>
+
 </html>
-    @using (Html.BeginForm())
-    {
-        <div class="form-horizontal">
-            <h4>My Task: @Model.Task</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
-            <div class="form-group">
-                <h4>Check this box if your task is complete.</h4>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TaskComplete, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TaskComplete, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Update Task Status" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-
-    }
-
-
-
-
-
-
+<br />
+<br />
+@Html.ActionLink("Create a new project", "Create", "Projects")
+<br />
+<br />

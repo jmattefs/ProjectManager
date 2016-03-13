@@ -26,6 +26,7 @@ namespace ProjectManager
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-theme.css",
                       "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/buncles/Chart").Include("~/Scripts/Chart.js"));
         }
     }
 }
