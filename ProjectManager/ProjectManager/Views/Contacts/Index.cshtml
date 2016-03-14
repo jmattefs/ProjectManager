@@ -24,7 +24,7 @@
             @Html.DisplayNameFor(model => model.MailingState)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MailingCountry)
+            @Html.DisplayNameFor(model => model.Project)
         </th>
         <th></th>
     </tr>
@@ -47,12 +47,12 @@
                 @Html.DisplayFor(modelItem => item.MailingState)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MailingCountry)
+                @Html.DisplayFor(modelItem => item.Project.ProjectName)
             </td>
             <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id=  item.Id}) |
+                @Html.ActionLink("Edit", "Edit", new { id=  item.Id}) |
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id})*@
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id})
             </td>
         </tr>
     }

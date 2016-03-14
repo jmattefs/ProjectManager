@@ -219,5 +219,6 @@ namespace ProjectManager.Models.Salesforce1
         [StringLength(100)]
         public string Languages__c { get; set; }
 
+        public Project Project { get; set; }
     }
 }

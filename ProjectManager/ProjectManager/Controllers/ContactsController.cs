@@ -213,8 +213,8 @@ namespace ProjectManager.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = _ContactsPostBinding)] Contact contact)
-        {
+        public async Task<ActionResult> Create([Bind(Include = "Id, Salutation, FirstName, LastName, MailingStreet, MailingCity, MailingState, PostalCode, Project")] Contact contact)
+        {                                       
             String id = String.Empty;
             try
             {
