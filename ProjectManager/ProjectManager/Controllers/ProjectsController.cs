@@ -19,6 +19,10 @@ namespace ProjectManager.Controllers
         {
             return RedirectToAction("Assign", "TeamMembers");
         }
+        public ActionResult Forum()
+        {
+            return Redirect("http://mb.boardhost.com/projectmanager/");
+        }
 
         // GET: Projects/Details/5
         public ActionResult Details(int? id)

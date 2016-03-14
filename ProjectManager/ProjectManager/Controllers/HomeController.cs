@@ -46,7 +46,7 @@ namespace ProjectManager.Controllers
             }
             else if (UserRole == 3)
             {
-                return RedirectToAction("Details", "Clients");
+                return RedirectToAction("MyProject", "Clients");
             }
             else
             {
