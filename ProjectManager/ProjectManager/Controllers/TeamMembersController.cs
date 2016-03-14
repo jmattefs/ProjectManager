@@ -15,6 +15,7 @@ namespace ProjectManager.Controllers
     {
         private PMDBcontext db = new PMDBcontext();
         ProjectManager.Models.TeamMember tm = new Models.TeamMember();
+        
         public ActionResult MyProject()
         {
             var id = User.Identity.GetUserId();
@@ -33,9 +34,20 @@ namespace ProjectManager.Controllers
                 var model = db.TeamMembers.Where(x => x.Name == email).Select(x => x).FirstOrDefault();
 
                 model.TaskComplete = teamMember.TaskComplete;
-                
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                if (model.TaskComplete == true)
+                {
+                    return RedirectToAction("Project", teamMember);
+                }
+                else
+                {
+                    return RedirectToAction("MyProject");
+                }
+                
+                
+               
+               
             }
             return View();
         }
@@ -140,6 +152,10 @@ namespace ProjectManager.Controllers
                 return HttpNotFound();
             }
             return View(teamMember);
+        }
+        public ActionResult Project(TeamMember tm)
+        {
+            return View(tm);
         }
 
         // POST: TeamMembers/Delete/5

@@ -1,13 +1,12 @@
-﻿@model ProjectManager.Models.ScrumMaster
-
+﻿@model ProjectManager.Models.TeamMember
+@using ProjectManager.Models
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "MyProject";
 }
 <br />
 <br />
-<h2>My Project Status</h2>
+<h2>My Project Status: Complete</h2>
 <br />
-
 <html>
 <head>
     <title>Doughnut Chart</title>
@@ -28,13 +27,15 @@
         <canvas id="chart-area" width="750" height="750" />
     </div>
 
-
     <script>
 
         var doughnutData = [
+
+
 				{
+
 				    value: 100,
-				    color: "red",
+				    color: "green",
 				    highlight: "#85b7ea",
 				    label: "Task A"
 				},
@@ -51,22 +52,53 @@
 				    label: "Task C"
 				},
 
-
         ];
 
+
         window.onload = function () {
+
+
             var ctx = document.getElementById("chart-area").getContext("2d");
+
             window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, { responsive: true });
+
+
+
+
         };
 
 
 
     </script>
 </body>
-
 </html>
-<br />
-<br />
-@Html.ActionLink("Create a new project", "Create", "Projects")
-<br />
-<br />
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>My Task: Complete Task A</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            <h4>Check this box if your task is complete.</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TaskComplete, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TaskComplete, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update Task Status" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+
+
